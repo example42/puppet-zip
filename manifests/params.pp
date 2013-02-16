@@ -17,7 +17,7 @@ class zip::params {
   ### Application related parameters
 
   $package = $::operatingsystem ? {
-    default => 'zip',
+    default => [ 'zip' , 'unzip' ],
   }
 
   # General Settings

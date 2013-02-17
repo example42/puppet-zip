@@ -51,7 +51,8 @@ class zip (
   $version             = params_lookup( 'version' ),
   $absent              = params_lookup( 'absent' ),
   $noops               = params_lookup( 'noops' ),
-  $package             = params_lookup( 'package' )
+  $package             = params_lookup( 'package' ),
+  $package_unzip       = params_lookup( 'package' )
   ) inherits zip::params {
 
   $bool_absent=any2bool($absent)
@@ -63,14 +64,16 @@ class zip (
     false => $zip::version,
   }
 
-  $manage_audit = $zip::bool_audit_only ? {
-    true  => 'all',
-    false => undef,
-  }
-
   ### Managed resources
   if ! defined(Package[$zip::package]) {
     package { $zip::package:
+      ensure  => $zip::manage_package,
+      noop    => $zip::bool_noops,
+    }
+  }
+
+  if ! defined(Package[$zip::package_unzip]) {
+    package { $zip::package_unzip:
       ensure  => $zip::manage_package,
       noop    => $zip::bool_noops,
     }

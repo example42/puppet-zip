@@ -1,4 +1,4 @@
-= Puppet module: zip
+# Puppet module: zip
 
 This is a Puppet module for zip
 It provides only package installation and management
@@ -14,7 +14,7 @@ Released under the terms of Apache 2 License.
 This module requires the presence of Example42 Puppi module in your modulepath.
 
 
-== USAGE - Basic management
+## USAGE - Basic management
 
 * Install zip with default settings
 

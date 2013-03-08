@@ -25,9 +25,4 @@ describe 'zip' do
     it { should contain_package('zip').with_noop('true') }
   end
 
-  describe 'Test customizations - custom class' do
-    let(:params) { {:my_class => "zip::spec" } }
-    it { should contain_file('zip.conf').with_content(/rspec.example42.com/) }
-  end
-
 end

@@ -52,7 +52,7 @@ class zip (
   $absent              = params_lookup( 'absent' ),
   $noops               = params_lookup( 'noops' ),
   $package             = params_lookup( 'package' ),
-  $package_unzip       = params_lookup( 'package' )
+  $package_unzip       = params_lookup( 'package_unzip' )
   ) inherits zip::params {
 
   $bool_absent=any2bool($absent)

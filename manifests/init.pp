@@ -26,7 +26,7 @@
 # [*noops*]
 #   Set noop metaparameter to true for all the resources managed by the module.
 #   Basically you can run a dryrun for this specific module if you set
-#   this to true. Default: false
+#   this to true. Default: undef
 #
 # Default class params - As defined in zip::params.
 # Note that these variables are mostly defined and used in the module itself,
@@ -56,7 +56,6 @@ class zip (
   ) inherits zip::params {
 
   $bool_absent=any2bool($absent)
-  $bool_noops=any2bool($noops)
 
   ### Definition of some variables used in the module
   $manage_package = $zip::bool_absent ? {
@@ -68,14 +67,14 @@ class zip (
   if ! defined(Package[$zip::package]) {
     package { $zip::package:
       ensure  => $zip::manage_package,
-      noop    => $zip::bool_noops,
+      noop    => $zip::noops,
     }
   }
 
   if ! defined(Package[$zip::package_unzip]) {
     package { $zip::package_unzip:
       ensure  => $zip::manage_package,
-      noop    => $zip::bool_noops,
+      noop    => $zip::noops,
     }
   }
 

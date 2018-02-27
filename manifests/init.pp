@@ -79,7 +79,7 @@ class zip (
   }
 
   ### Include custom class if $my_class is set
-  if $zip::my_class {
+  if $zip::my_class and $zip::my_class != '' {
     include $zip::my_class
   }
 
